@@ -15,12 +15,12 @@ import os
 def execute(args):
   try:
     #print("trying...")
-    if(args[0] == "ping"):
+    if(args[0] == "ping" and len(args) == 2):
       args = [args[0],"-c","4",args[1]]
     sp.call(args)
   except:
     #print("failing...")
-    print("Command '{}' not defined".format(args))
+    print(f"Command '{args}' not defined")
 #----------------------------------------
 
 #Bloque de código que analiza la entrada erronea
@@ -31,9 +31,11 @@ def analyze(args, correct, list):
     execute(args)
   else:
     #Si no está, le pregunta al usuario wdym y lo guarda (o no)
-    answer = input("Command {} not found\nDid you mean '{}'[y/n]: ".format(args[0],correct))
-    answer = answer.lower()
-    if(answer[0] == 'y'):
+    answer = input(f"Command {args[0]} not found\nDid you mean '{correct}'[Y/n]: ")
+    if(answer):
+      answer = answer.lower()
+    if(not answer or answer[0] == 'y'):
+      print("Ok! I'll remember that!")
       list.append(args[0])
       #for tries in list:
       #  print(tries)
@@ -69,11 +71,11 @@ def main():
   alive = True
   path = getPath()
   while alive:
-    command = input("{}:> ".format(path))
-    #print("The command is '{}'".format(command))
+    command = input(f"{path}:> ")
     if(re.match(r'^[eE][xX][iI][tT]$',command)):
+      print("See you later!")
       alive = False
-    else:
+    elif(command):
       args = command.split()
       if(args[0] == "ls" or args[0] == "df" or args[0] == "ping"):
         execute(args)
