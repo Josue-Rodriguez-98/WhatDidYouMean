@@ -69,7 +69,7 @@ def main():
   alive = True
   path = getPath()
   while alive:
-    command = input("{}> ".format(path))
+    command = input("{}:> ".format(path))
     #print("The command is '{}'".format(command))
     if(re.match(r'^[eE][xX][iI][tT]$',command)):
       alive = False
