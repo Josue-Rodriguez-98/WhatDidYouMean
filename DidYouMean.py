@@ -15,16 +15,8 @@ def execute(args):
   try:
     #print("trying...")
     if(args[0] == "ping"):
-      p1 = sp.Popen([args[0], '-c 2', args[1]], stdout=sp.PIPE)
-      #output = p1.communicate()[0]
-      #print(output)
-      output = p1.communicate()[0].decode("utf-8")
-      #communicate devuelve algo en bytes, utilizamos decode para pasarlo a string
-      messageRcvd = output.split("\n")
-      for message in messageRcvd:
-        print(message)
-    else:
-      sp.call(args)
+      args = [args[0],"-c","4",args[1]]
+    sp.call(args)
   except:
     #print("failing...")
     print("Command '{}' not defined".format(args))
