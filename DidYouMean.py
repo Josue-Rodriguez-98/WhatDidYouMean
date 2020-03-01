@@ -1,4 +1,4 @@
-#!/usr/bin/python3
+#/usr/bin/python3
 
 # -----------------------------------------------------------
 # Proyecto I de Sistemas Inteligentes
@@ -25,13 +25,13 @@ def execute(args):
 
 #Bloque de código que analiza la entrada erronea
 def analyze(args, correct, list):
-  #Busca si el comando ya está en lsList
+  #Busca si el comando ya está en list
   if(args[0] in list):
     args[0] = correct
     execute(args)
   else:
     #Si no está, le pregunta al usuario wdym y lo guarda (o no)
-    answer = input(f"Command {args[0]} not found\nDid you mean '{correct}'[Y/n]: ")
+    answer = input(f"Command {args[0]} not found\nDid you mean '{correct}'? [Y/n]: ")
     if(answer):
       answer = answer.lower()
     if(not answer or answer[0] == 'y'):
