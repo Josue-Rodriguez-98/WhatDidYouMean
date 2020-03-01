@@ -9,6 +9,7 @@
 
 import subprocess as sp
 import re
+import os
 
 #Bloque de código que ejecuta el comando
 def execute(args):
@@ -45,13 +46,30 @@ def analyze(args, correct, list):
     return list
 #------------------------------------------
 
+def getPath():
+  currentPath = os.getcwd()[1:].split("/")
+  newPath = []
+  retVal = ""
+  for path in currentPath:
+    #print(path)
+    if(path != "home"):
+      newPath.append(path)
+  for path in newPath:
+    if(path == currentPath[1]):
+      retVal = path + ":~"
+    else:
+      retVal += "/" + path
+  return retVal
+  
+
 def main():
   lsList = []
   dfList = []
   pingList = []
   alive = True
+  path = getPath()
   while alive:
-    command = input("PySHELL> ")
+    command = input("{}> ".format(path))
     #print("The command is '{}'".format(command))
     if(re.match(r'^[eE][xX][iI][tT]$',command)):
       alive = False
