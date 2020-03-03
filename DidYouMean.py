@@ -31,7 +31,8 @@ def analyze(args, correct, list):
     execute(args)
   else:
     #Si no está, le pregunta al usuario wdym y lo guarda (o no)
-    answer = input(f"Command {args[0]} not found\nDid you mean '{correct}'? [Y/n]: ")
+    #answer = input(f"Command {args[0]} not found\nDid you mean '{correct}'? [Y/n]: ")
+    answer = input(f"Did you mean '{correct}'? [Y/n]: ")
     if(answer):
       answer = answer.lower()
     if(not answer or answer[0] == 'y'):
@@ -62,7 +63,7 @@ def getPath():
     else:
       retVal += "/" + path
   return retVal
-  
+#-------------------------------------------  
 
 def main():
   lsList = []
