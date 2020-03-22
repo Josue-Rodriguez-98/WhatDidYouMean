@@ -129,9 +129,7 @@ def main():
         else:
           if(re.match(r'^[jklñ{][asdf]$',args[0])):
             #evaluar ls
-            print(lsList)
             analyze(args,"ls",lsList)
-            print(lsList)
           elif(re.match(r'^[asdfg][sdfgh]$',args[0])):
             #evaluar df
             analyze(args,"df",dfList)
